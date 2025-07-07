@@ -1,0 +1,2 @@
+customer_name,card_number,address_line1,address_line2,area,mobile_no,defaulter,pending_amount,status,enrolled_date,updated_date,billing_frequency
+Vishal,20252001,"no.3,chennai",,6000001,927458599384,Y,6.0,ACTIVE,,,QTR
