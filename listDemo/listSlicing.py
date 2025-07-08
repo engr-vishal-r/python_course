@@ -1,3 +1,4 @@
+#lists are mentioned in [] and is mutable
 playlist=['naan vanavilaiye pathen', 'golden sparrow', 'ranu bombay ki ranu', 'nenjinile']
 
 #list methods
