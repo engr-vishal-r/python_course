@@ -8,6 +8,3 @@ def order():
 
     quantity()
 order()
-
-
-print(dir(__builtins__))

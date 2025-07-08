@@ -1,4 +1,4 @@
-from add import addition
+from acceptAnyArgs import addition
 
-result=addition(5,3)
+result=addition(5,3,8)
 print(result)
