@@ -33,6 +33,6 @@ grocery.add_item("Rice",75)
 
 print("Item to remove: ", grocery.remove_item("Dhall"))
 
-print("Cart Items: ",grocery.get_items()*2)
+print("Cart Items: ",grocery.get_items())
 print("Cart Items: ",grocery.get_total_price())
 
