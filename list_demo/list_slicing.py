@@ -19,4 +19,4 @@ print("new song added at last element -->", playlist)
 
 #list slicing
 print("first 2 elements  -->", playlist[0:2])
-print("last 2 elements -->", playlist[-2:])
+print("last 2 elements -->", playlist[-2::])
