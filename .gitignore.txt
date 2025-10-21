@@ -1,7 +1,7 @@
-.csv
-
+**/*.csv
 **/practice.py
 
 # Python cache files
-*.pyc
-__pycache__/
+**/*.pyc
+**/__pycache__/
+**/__init__.py
