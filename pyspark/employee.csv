@@ -1,0 +1,10 @@
+empId,fname,lname,gender,dob,yex,email,password,phone,address,state
+335,Vishal,R,Male,02-05-1995,2.5,rvishal020595@gmail.com,qwerty,919108348501,"No.235, 5th street, Yamuna Nagar, Nazerathpet",Kerala
+200,MahendraKannan,S,Male,05-05-1997,3,smkannan@gmail.com,zxcvbv,919874563210,"No.300,Sivakasi",Tamil Nadu
+100,Prabhakaran,V,Male,02-01-1997,2.8,prabhakaranv@gmail.com,asdfgf,911234567890,"No.100,1st street,Rajapalayam",Tamil Nadu
+343,Sabarinathan,C,Male,20-10-1997,1.5,sabarinathanc31@gmail.com,lkjhgfg,919965129542,"No.200, Thiruvannamalai",Puducherry
+205,Anandhi,A,Male,09-03-2022,1,anandhi.a@yahoo.in,qwerty,9191004567893,"No.101,chennai",Andaman and Nicobar Islands
+108,Vizhal,R,Male,03-03-2022,3.3,vizhalz@gmail.com,1234qwerty,919001234567,"No.201,Andhra Pradesh",Andhra Pradesh
+335,Vishal,R,Male,02-05-1995,2.5,rvishal020595@gmail.com,qwerty,919108348501,"No.235, 5th street, Yamuna Nagar, Nazerathpet",Kerala
+108,Vizhal,R,Male,03-03-2022,3.3,vizhalz@gmail.com,1234qwerty,919108348501,"No.235, 5th street, Yamuna Nagar, Nazerathpet",Kerala
+108,Vizhal,R,Male,03-03-2025,3.3,vizhalz@gmail.com,1234qwerty,919108348501,"No.235, 5th street, Yamuna Nagar, Nazerathpet",Kerala

@@ -21,10 +21,11 @@ class BankAccount:
             print("Insufficient balance or invalid amount")
 
 # Usage
-acc = BankAccount("Ramesh", 1000)
+acc = BankAccount("Ramesh", 2000)
 
 # Direct access to balance is not allowed
 # print(acc.__balance)  ❌ This will raise an AttributeError
+print("Account Holder :", acc.account_holder) 
 
 # Proper access via methods
 print("Initial Balance:", acc.get_balance())  # ✅
