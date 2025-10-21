@@ -1,2 +1,7 @@
 .csv
-practice.py
+
+**/practice.py
+
+# Python cache files
+*.pyc
+__pycache__/
