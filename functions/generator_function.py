@@ -5,7 +5,5 @@ def countdown(n):
         yield n
         n -= 1
 
-new_func=countdown(5)
-
-for value in new_func:
+for value in countdown(5):
     print(value)

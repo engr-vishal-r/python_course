@@ -4,8 +4,8 @@ lst = sorted(chars)
 print("Substrings:")
 
 n = len(lst)
-for i in range(n):
-    substring = []  # start new substring
-    for j in range(i, n):
-        substring.append(lst[j])  # add next char
-        print(' '.join(substring))  # print current substring
+
+for length in range(1, n + 1):  # window size
+    for i in range(n - length + 1):  # start index of window
+        substring = lst[i:i + length]
+        print(' '.join(substring))
