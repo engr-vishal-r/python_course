@@ -16,5 +16,4 @@ def multiply(a, b):
     return -result if negative else result
 
 # Example
-print(multiply(4, 3))
 print(multiply(-4, 3))

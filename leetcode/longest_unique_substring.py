@@ -1,21 +1,20 @@
-def longest_unique_substring(s):
-    char_set = set()
-    left = 0
-    max_len = 0
-    start_idx = 0
+string = "abcdabcdebb"
 
-    for right in range(len(s)):
-        while s[right] in char_set:
-            char_set.remove(s[left])
-            left += 1
-        char_set.add(s[right])
-        if right - left + 1 > max_len:
-            max_len = right - left + 1
-            start_idx = left
+start = 0
+max_length = 0
+max_substring = ""
+seen = {}
+
+for end, char in enumerate(string):
+    if char in seen and seen[char] >= start:
+        start = seen[char] + 1   # Move start after the previous duplicate
+    seen[char] = end             # Update last seen index
     
-    return max_len, s[start_idx:start_idx+max_len]
+    # Calculate current window length
+    current_length = end - start + 1
+    if current_length > max_length:
+        max_length = current_length
+        max_substring = string[start:end+1]
 
-s = "abcdabcbb"
-length, substring = longest_unique_substring(s)
-print("Length:", length)
-print("Substring:", substring)
+print("Longest unique substring:", max_substring)
+print("Length:", max_length)

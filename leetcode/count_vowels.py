@@ -1,9 +1,12 @@
-words="COMPUTER"
-vowels="AEIOU"
-count=0
+from collections import Counter
 
-for char in words:
-    if char in vowels:
-        count += 1
+string="LoveMyCountry"
 
-print("Count of Vowels  :", count)
+vowels="aeiouAEIOU"
+
+vowel_chars = [ch for ch in string if ch in vowels]
+
+# Count frequency of vowels
+frequency = Counter(vowel_chars)
+for key,value in frequency.items():
+    print(key,value)

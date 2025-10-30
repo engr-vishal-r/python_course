@@ -4,6 +4,7 @@ number.sort()
 # Compute both product options
 product1 = number[0] * number[1]    
 product2 = number[-1] * number[-2]
+print(product2)
 
 # Compare and print the pair with max product
 if product1 > product2:
