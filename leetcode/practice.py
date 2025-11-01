@@ -1,19 +1,18 @@
-string="abcdabcabcde"
+import pandas as pd
 
-start=0
-seen={}
-max_length=0
-max_substring=""
+def nth_high_salary(data : pd.DataFrame) -> pd.DataFrame:
+    sorted_data=data.sort_values(by='salary',ascending=False).fillna(0)[["id","salary","managerId"]]
+    sorted_data["managerId"]=sorted_data["managerId"].astype(int)
 
-for end, char in enumerate(string):
-    if char in seen and seen[char] >= start:
-        start=seen[char]+1
-    seen[char]=end
-    current_length=end - start +1
-    if current_length > max_length:
-        max_length=current_length
-        max_substring=string[start:end+1]
+    return sorted_data
 
 
-print(max_length)
-print(max_substring)
+
+data = pd.DataFrame({
+    "id": [1, 2, 3, 4,5],
+    "name": ["Joe", "Henry", "Sam", "Max","Henry"],
+    "salary": [70000, 80000, 60000, 90000,110000],
+    "managerId": [3, 4, None, None, None]
+})
+
+print(nth_high_salary(data))
