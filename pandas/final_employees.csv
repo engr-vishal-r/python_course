@@ -1,0 +1,3 @@
+emp_id,name,dept,salary,join_date,bonus,year_joined,name_upper,salary_status
+102,Bob,IT,75000.0,2019-05-23,7500.0,2019,BOB,High
+103,Charlie,IT,80000.0,2021-07-30,8000.0,2021,CHARLIE,High

@@ -1,0 +1,7 @@
+emp_id,name,dept,salary,join_date,bonus,year_joined,name_upper,salary_status
+101,Alice,HR,60000.0,2020-01-15,6000.0,2020,ALICE,Low
+102,Bob,IT,75000.0,2019-05-23,7500.0,2019,BOB,High
+103,Charlie,IT,80000.0,2021-07-30,8000.0,2021,CHARLIE,High
+104,David,Finance,69800.0,2020-02-11,,2020,DAVID,Low
+105,Eva,HR,62000.0,2021-03-19,6200.0,2021,EVA,Low
+106,Frank,Finance,72000.0,2018-11-05,7200.0,2018,FRANK,High

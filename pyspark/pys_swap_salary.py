@@ -12,8 +12,9 @@ data = [
     (4, "D", "f", 500)
 ]
 
+data_column= ["id", "name", "sex", "salary"]
 # Create DataFrame with schema
-salary = spark.createDataFrame(data, ["id", "name", "sex", "salary"])
+salary = spark.createDataFrame(data, data_column)
 
 # Swap 'm' and 'f' using a single update-like statement
 salary = salary["sex"].replace({"m": "f", "f": "m"})

@@ -20,7 +20,7 @@ person_df = spark.createDataFrame(person_data, person_columns)
 address_df = spark.createDataFrame(address_data, address_columns)
 
 # LEFT JOIN on personId
-result_df = person_df.join(address_df, on="personId", how="left") \
-                     .select("firstName", "lastName", "city", "state")
+result_df = person_df.join(address_df, on="personId", how="left")\
+    .select("firstName", "lastName", "city", "state")
 
 result_df.show()
