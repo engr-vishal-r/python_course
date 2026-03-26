@@ -11,5 +11,17 @@ print("spark session created successfully")
 jdbc_url = "jdbc:mysql://localhost:3306/dairydb"
 properties = {"user": "root", "password": "root", "driver": "com.mysql.cj.jdbc.Driver"}
 
-mysql_df = spark.read.jdbc(url=jdbc_url, table="product", properties=properties)
+# Read MySQL table with partitioning
+mysql_df = (
+    spark.read
+    .format("jdbc")
+    .option("url", jdbc_url)
+    .option("dbtable", "product")
+    .option("partitionColumn", "card_number")
+    .option("lowerBound", 1)
+    .option("upperBound", 100000000)
+    .option("numPartitions", 4)
+    .options(**properties)
+    .load()
+)
 mysql_df.show()

@@ -1,0 +1,12 @@
+empId,fname,lname,gender,dob,yex,email,password,phone,address,state
+101,John,Doe,M,21-03-1995,5,john.doe@gmail.com,John@123,9876543210,"12 MG Road, Bengaluru",Karnataka
+102,Priya,Sharma,F,11-06-1998,3,priya_sharma@outlook.com,Priya@2024,9123456789,"45 Church Street, Mumbai",Maharashtra
+103,Arjun,Mehta,M,09-10-1992,8,arjun.mehta@company.co,Arjun@abc,9988776655,"17 Park Lane, Delhi",Delhi
+104,Sneha,Nair,F,28-02-1997,4,sneha_nair123@gmail.com,Sneha@321,9876501234,"8 Residency Road, Kochi",Kerala
+105,Ravi,Kumar,M,19-01-1990,10,ravi.kumar,Ravi#123,9999999999,"22 Gandhi Street, Hyderabad",Telangana
+106,Meena,Raj,F,07-07-1988,12,meena.raj@company.org,Meena@456,9823401122,"2 Mount Road, Chennai",Tamil Nadu
+107,Akash,Verma,M,25-12-1999,2,akash_verma@yahoo.com,Akash@999,9786524311,"90 FC Road, Pune",Maharashtra
+108,Lakshmi,Menon,F,30-11-1994,6,lakshmi.menon@gmail.com,Lakshmi@007,9898123456,"33 MG Layout, Bengaluru",Karnataka
+109,Rajesh,Singh,M,05-09-1989,11,rajeshsingh@rediffmail.com,Rajesh@999,NA,"78 Link Road, Lucknow",UP
+110,Kavya,Iyer,F,15-08-2000,1,kavya_iyer@mail,Kavya@100,9000088888,"1 VV Street, Chennai",Tamil Nadu
+111,Naren,Kumar,M,12-08-2012,1,naren_kumar@gmail.com,naren@100,9125444110,"1 VV Street, Chennai",Tamil Nadu

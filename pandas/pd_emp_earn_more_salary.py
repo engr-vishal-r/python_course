@@ -19,9 +19,9 @@ merged = employee.merge(
 )
 
 # Filter where employee salary > manager salary
-result = merged[merged["salary"] > merged["salary_manager"]][["name"]]
+result = merged[merged["salary"] > merged["salary_manager"]][["name"]].rename(columns={"name": "Employee"})
 
 # Rename output column
-result.columns = ["Employee"]
+#result.columns = ["Employee"]
 
 print(result)

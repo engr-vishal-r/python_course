@@ -12,6 +12,15 @@ def removeDuplicates(nums):
 
     return k
 
-nums = [1,1,2,3,3]
+nums = [1,1,3,4,2,4,2,3,3]
+
+#sorting
+for i in range(len(nums)):
+    for j in range(1, len(nums) -i -1):
+        if nums[j] > nums[j+1]:
+            temp=nums[j]
+            nums[j]=nums[j+1]
+            nums[j+1]=temp
+
 k = removeDuplicates(nums)
 print(nums[:k]) 

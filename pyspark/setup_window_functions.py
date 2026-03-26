@@ -1,9 +1,11 @@
 from pyspark.sql import SparkSession
 from pyspark.sql.functions import col, lead, lag
 from pyspark.sql.window import Window
+import time
 
+spark= SparkSession.builder.appName("WindowFunctions").master("local[*]").getOrCreate()
 
-spark= SparkSession.builder.appName("WindowFunctions").getOrCreate()
+start_time = time.time()
 
 json_df=spark.read.json("file:///F:/python_tutorial/pyspark/clean_employees.json")
 
@@ -16,5 +18,9 @@ result_df = json_df.withColumn("next_salary", lead("salary", 1).over(window_spec
     .withColumn("prev_salary", lag("salary", 1).over(window_spec)) \
     .withColumn("salary_hike", col("salary") - col("prev_salary"))
 
+
+end_time = time.time()
+
+print(f"Total duration: {end_time - start_time:.2f} seconds")
 # Show selected columns
 result_df.select("emp_id", "name", "salary", "prev_salary", "next_salary", "salary_hike").show()

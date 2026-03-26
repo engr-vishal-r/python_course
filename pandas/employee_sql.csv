@@ -1,0 +1,10 @@
+employee_id,first_name,last_name,hire_date,salary,email_id,contact,valid_email,year_joined,perm_emp,tax,eligible_for_hike
+1,VISHAL,r,2020-06-27,100000.0,email not added,9444444400.0,no,2020,yes,30000.0,False
+2,RAMESH,h,2019-06-27,80000.0,abcd@gmail.com,,yes,2019,yes,24000.0,False
+3,SANJANA,r,2020-06-27,70000.0,abc@123gm,9444444400.0,no,2020,yes,21000.0,False
+4,LATHA,r,2021-06-27,50000.0,email not added,9444444401.0,no,2021,yes,15000.0,False
+5,VISHAL,r,2022-06-27,80000.0,email not added,944444477.0,no,2022,yes,24000.0,False
+6,LATHA,r,2025-06-27,60000.0,email not added,9444444001.0,no,2025,no,18000.0,False
+7,VISHAL,r,2025-06-27,110000.0,email not added,944444400.0,no,2025,no,33000.0,True
+8,SANJANA,r,2025-06-27,95000.0,gmail-com@gmail.com,,no,2025,no,28500.0,True
+9,RAJESH,c,2021-01-01,11500.0,dma@gmail.com,944444400.0,yes,2021,yes,3450.0,False

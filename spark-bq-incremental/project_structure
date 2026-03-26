@@ -1,0 +1,21 @@
+spark-bq-incremental/
+│
+├── dags/
+│   ├── spark_bq_parent_dag.py
+│   ├── spark_bq_child_dag.py
+│   └── dag_config.py
+│
+├── spark_jobs/
+│   ├── main.py
+│   ├── schema.py
+│   ├── transform.py
+│   ├── watermark.py
+│   ├── error_logger.py
+│   └── logging_utils.py
+│
+├── sql/
+│   ├── watermark_table.sql
+│   └── error_table.sql
+│
+├── requirements.txt
+└── README.md

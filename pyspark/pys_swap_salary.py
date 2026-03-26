@@ -1,5 +1,6 @@
 from pyspark.sql import SparkSession
 from pyspark.sql.functions import when, col
+import pandas as pd
 
 # Create SparkSession
 spark = SparkSession.builder.appName("salary").getOrCreate()
@@ -17,8 +18,8 @@ data_column= ["id", "name", "sex", "salary"]
 salary = spark.createDataFrame(data, data_column)
 
 # Swap 'm' and 'f' using a single update-like statement
-salary = salary["sex"].replace({"m": "f", "f": "m"})
+#salary = salary(col("sex")).replace({"m": "f", "f": "m"})
 
-#salary=salary.withColumn("sex", when(col("sex") =="m","f").when(col("sex")=="f","m").otherwise(col("sex")))
+salary=salary.withColumn("sex", when(col("sex") =="m","f").when(col("sex")=="f","m").otherwise(col("sex")))
 
 salary.show()

@@ -1,65 +1,115 @@
 from pyspark.sql import SparkSession
-from pyspark.sql.functions import *
-from pyspark.sql.types import *
+from pyspark.sql.functions import explode, col, to_date, max, min, datediff
 
-spark = SparkSession.builder.appName("ReadJsonArray").getOrCreate()
+# ---------------------------------------------------------
+# 1. Create Spark Session
+# ---------------------------------------------------------
 
-# Step 1: Read the entire file as a single string
-employees_df = spark.read.text("file:///F:/python_tutorial/pyspark/employees.json") 
-dept_df = spark.read.text("file:///F:/python_tutorial/pyspark/departments.json")
+spark = SparkSession.builder \
+    .appName("Employee JSON Processing") \
+    .getOrCreate()
 
-# Step 2: Define schemas
-emp_schema = StructType([
-    StructField("emp_id", IntegerType()),
-    StructField("name", StringType()),
-    StructField("salary", IntegerType()),
-    StructField("dept_id", IntegerType()),
-    StructField("joining_date", StringType())
-])
 
-dept_schema = StructType([
-    StructField("dept_id", IntegerType()),
-    StructField("subject", StringType())
-])
+# ---------------------------------------------------------
+# 2. Read JSON Files
+# ---------------------------------------------------------
 
-# Step 3: Parse JSON
-json_emp_df = employees_df.select(from_json(employees_df.value, ArrayType(emp_schema)).alias("data"))
-json_dept_df = dept_df.select(from_json(dept_df.value, ArrayType(dept_schema)).alias("data"))
+emp_df = spark.read.json("file:///F:/python_tutorial/pyspark/employees.json")
+dept_df = spark.read.json("file:///F:/python_tutorial/pyspark/departments.json")
 
-# Step 4: Explode arrays
-final_emp_df = json_emp_df.select(explode("data").alias("item"))
-final_dept_df = json_dept_df.select(explode("data").alias("item"))
 
-# Step 5: Flatten
-flattened_emp_df = final_emp_df.select("item.*")
-flattened_dept_df = final_dept_df.select("item.*")
+# ---------------------------------------------------------
+# 3. Flatten Nested JSON (addresses)
+# ---------------------------------------------------------
 
-# Step 6: Clean & Filter
-clean_df = flattened_emp_df.dropna().filter(flattened_emp_df['salary'] > 30000)
+emp_flat_df = emp_df \
+    .withColumn("address", explode("addresses")) \
+    .select(
+        "emp_id",
+        "name",
+        "salary",
+        "dept_id",
+        "joining_date",
+        col("address.communication_address.area").alias("area")
+    )
 
-# Step 7: Join
-joined_df = clean_df.join(flattened_dept_df, on="dept_id", how="inner")
 
-# Final Output
-joined_df.select("name", "subject", "salary").show()
+# ---------------------------------------------------------
+# 4. Clean Data
+# ---------------------------------------------------------
 
-#Write to Parquet / JSON / CSV
-#joined_df.write.mode("overwrite").parquet("file:///F:/python_tutorial/pyspark/joined_data.parquet")
+clean_df = emp_flat_df \
+    .dropna() \
+    .filter(col("salary") > 30000)
 
-# Convert 'joining_date' column to date type if needed
-df = flattened_emp_df.withColumn("joining_date", to_date("joining_date"))
 
-# Group by name and calculate max, min, and date difference
-agg_df = df.groupBy("name").agg(
+# ---------------------------------------------------------
+# 5. Join with Department Table
+# ---------------------------------------------------------
+
+joined_df = clean_df.join(
+    dept_df,
+    on="dept_id",
+    how="inner"
+)
+
+
+# ---------------------------------------------------------
+# 6. Show Final Employee Output
+# ---------------------------------------------------------
+
+print("Employee Details After Join")
+
+joined_df.select(
+    "name",
+    "subject",
+    "salary",
+    "area"
+).show(truncate=False)
+
+
+# ---------------------------------------------------------
+# 7. Convert Joining Date to Date Type
+# ---------------------------------------------------------
+
+date_df = emp_flat_df.withColumn(
+    "joining_date",
+    to_date("joining_date")
+)
+
+
+# ---------------------------------------------------------
+# 8. Aggregation
+# Find earliest and latest joining per employee
+# ---------------------------------------------------------
+
+agg_df = date_df.groupBy("name").agg(
     max("joining_date").alias("latest_hire"),
     min("joining_date").alias("first_hire")
 )
 
-# Add days_between_hires column
+
+# ---------------------------------------------------------
+# 9. Calculate Days Between Hires
+# ---------------------------------------------------------
+
 result_df = agg_df.withColumn(
     "days_between_hires",
-    datediff("latest_hire", "first_hire")
+    datediff(col("latest_hire"), col("first_hire"))
 )
 
-# show result
-result_df.show()
+
+# ---------------------------------------------------------
+# 10. Show Aggregated Results
+# ---------------------------------------------------------
+
+print("Employee Hire Gap Analysis")
+
+result_df.show(truncate=False)
+
+
+# ---------------------------------------------------------
+# 11. Stop Spark Session
+# ---------------------------------------------------------
+
+spark.stop()
